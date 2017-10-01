@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<head>
+	<title>Weather</title>
+</head>
+<body>
+<header>
+	
+</header>
+<div>
+	<form onsubmit="return load()">
+		<input type="text" name="city" id="city" placeholder="Enter city name">
+		<input type="submit" id="submit">
+	</form>
+	<div>
+		<div>
+			<h1 id="temp">Temperature : </h1>
+		</div>
+		<div>
+			<h1 id="pressure">Pressure : </h1>
+		</div>
+		<div>
+			<h1 id="humidity">Humidity : </h1>
+		</div>
+		<div>
+			<h1 id="lon">City geo location, longitude : </h1>
+		</div>
+		<div>
+			<h1 id="lat">City geo location, latitude : </h1>
+		</div>
+		<div>
+			<h1 id="city_name">City_name : </h1>
+		</div>
+		<div>
+			<h1 id="wind_speed">Wind speed : </h1>
+		</div>
+		<div>
+			<h1 id="wind_dir">Wind direction : </h1>
+		</div>
+	</div>
+</div>
+<footer>
+	
+</footer>
+</body>
+<script type="text/javascript">
+	function load() {
+		var city = $("#city").val();
+		var urlw = "http://api.openweathermap.org/data/2.5/weather?q=" + city +"&units=metric&APPID=0a033ea833e9d49c48942990f577252c";
+		$.ajax({
+        url: urlw,
+        dataType: "jsonp",
+        jsonp: "callback",
+        success: function( data ) {
+        	var weather = [data.main.temp , data.main.pressure , data.main.humidity , data.coord.lon , data.coord.lat , data.name , data.wind.speed , data.wind.deg];
+            $("#temp").append(weather[0]);
+            $("#pressure").append(weather[1]);
+            $("#humidity").append(weather[2]);
+            $("#lon").append(weather[3]);
+            $("#lat").append(weather[4]);
+            $("#city_name").append(weather[5]);
+            $("#wind_speed").append(weather[6]);
+            $("#wind_dir").append(weather[7]);
+            }
+    });
+		 return false;
+	}
+</script>
+</html>
