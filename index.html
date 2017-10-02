@@ -2,70 +2,155 @@
 <html>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <head>
 	<title>Weather</title>
+	<style type="text/css">
+	body{
+		background-color: #1e88e5;
+	}
+		#input{
+			background-color: white;
+			margin-left: 20%;
+			margin-right: 20%;
+		}
+		#head_icon{
+			width: 100%;
+		}
+		#icon{
+			width: 100%;
+			height: 250%;
+		}
+		#temp{
+			font-size: 600%;
+			font-weight: bold;
+			color: #F44336;
+		}
+		#card_head{
+			font-size: 600%;
+			font-family: initial;
+			color: #3F51B5;
+		}
+		#humidity{
+			font-family:Lucida Console;
+			color: #00E676;
+			font-size: 150%;
+		}
+		#pressure{
+			font-family:Lucida Console;
+			color: #00E676;
+			font-size: 150%;
+		}
+		#wind{
+			font-family:Lucida Console;
+			color: #9C27B0;
+			font-size: 180%;
+		}
+		#cord{
+			font-style: initial;
+			color: #EF6C00;
+			font-size: 150%;
+		}
+		.row{
+			width: 50%;
+		}
+		td{
+			padding: 0%;
+		}
+		#card-action{
+			background-color: #ff8a50;
+		}
+	</style>
 </head>
 <body>
 <header>
 	
 </header>
+<center>
 <div>
-	<form onsubmit="return load()">
-		<input type="text" name="city" id="city" placeholder="Enter city name">
-		<input type="submit" id="submit">
+	<form onsubmit="return load()" id="input">
+		<input type="text" class="form-control" placeholder="Enter city name" id="city" name="city" autocomplete="off">
+		<input type="submit" id="submit" class="btn btn-success" value="Go">
 	</form>
-	<div>
-		<div>
-			<h1 id="temp">Temperature : </h1>
-		</div>
-		<div>
-			<h1 id="pressure">Pressure : </h1>
-		</div>
-		<div>
-			<h1 id="humidity">Humidity : </h1>
-		</div>
-		<div>
-			<h1 id="lon">City geo location, longitude : </h1>
-		</div>
-		<div>
-			<h1 id="lat">City geo location, latitude : </h1>
-		</div>
-		<div>
-			<h1 id="city_name">City_name : </h1>
-		</div>
-		<div>
-			<h1 id="wind_speed">Wind speed : </h1>
-		</div>
-		<div>
-			<h1 id="wind_dir">Wind direction : </h1>
-		</div>
-	</div>
 </div>
+<!-- card -->
+<div class="row">
+          <div class="card">
+            <div class="card-image">
+              <img src="" id="head_icon">
+            </div>
+            <div class="card-content">
+            	<table>
+            		<tr>
+            			<td>
+            				<table>
+            					<tr>
+            						<td id="card_head"></td>
+            					</tr>
+            					<tr>
+            						<td id="cord"></td>
+            					</tr>
+            				</table>
+            			</td>
+            			<td id="weather_icon">
+            				<img src="" id="icon">
+            			</td>
+            		</tr>
+            		<tr>
+            			<td id="temp"></td>
+            			<td>
+            				<table>
+            					<tr>
+            						<td id="humidity"></td>
+            					</tr>
+            					<tr>
+            						<td id="pressure"></td>
+            					</tr>
+            				</table>
+            			</td>
+            		</tr>
+            		<tr>
+            			<td id="wind"></td>
+            		</tr>
+            	</table>
+            </div>
+            <div class="card-action" id="card-action">
+              <a href="#">....</a>
+            </div>
+        </div>
+      </div>
+      <!-- card end -->
+  </center>
 <footer>
 	
 </footer>
 </body>
 <script type="text/javascript">
+	$(window).on("load" , function(){
+		$(".row").hide();
+	});
 	function load() {
 		var city = $("#city").val();
-		var urlw = "http://api.openweathermap.org/data/2.5/weather?q=" + city +"&units=metric&APPID=0a033ea833e9d49c48942990f577252c";
+		var urlw = "http://api.openweathermap.org/data/2.5/weather?q=" + city +"&type=accurate&units=metric&APPID=0a033ea833e9d49c48942990f577252c";
 		$.ajax({
         url: urlw,
         dataType: "jsonp",
         jsonp: "callback",
         success: function( data ) {
-        	var weather = [data.main.temp , data.main.pressure , data.main.humidity , data.coord.lon , data.coord.lat , data.name , data.wind.speed , data.wind.deg];
-            $("#temp").append(weather[0]);
-            $("#pressure").append(weather[1]);
-            $("#humidity").append(weather[2]);
-            $("#lon").append(weather[3]);
-            $("#lat").append(weather[4]);
-            $("#city_name").append(weather[5]);
-            $("#wind_speed").append(weather[6]);
-            $("#wind_dir").append(weather[7]);
+        	var weather = [data.main.temp , data.main.pressure , data.main.humidity , data.coord.lon , data.coord.lat , data.name , data.wind.speed , data.wind.deg , data.weather[0].icon , data.weather[0].description];
+        	$("#head_icon").attr("src" , "http://maps.googleapis.com/maps/api/streetview?size=600x400&location=" + weather[5]);
+        	$("#icon").attr("src" , "http://openweathermap.org/img/w/"+weather[8]+".png");
+            $("#temp").text(weather[0]+" °C");
+            $("#pressure").text(weather[1]+" atm Pressure");
+            $("#humidity").text(weather[2]+"% Humidity");
+            $("#cord").text("Coordinate(lon.,lat.) : "+weather[3]+" , "+weather[4]);
+            $("#card_head").text(weather[5]);
+            $("#wind").text("Wind : "+weather[6]+" m/s , "+weather[7]+"°");
             }
     });
+		$(".row").show();
 		 return false;
 	}
 </script>
