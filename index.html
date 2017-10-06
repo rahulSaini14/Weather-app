@@ -3,179 +3,192 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <head>
 	<title>Weather</title>
 	<style type="text/css">
 	body{
 		background-color: #1e88e5;
+		width: 100%;
 	}
-		#input{
-			background-color: white;
-			max-width: 80%;
-		}
-		#head_icon{
-			width: 100%;
-			order: 0;
-		}
-		#card_head{
-			font-size: 200%;
-			font-family: initial;
-			color: #3F51B5;
-			order: 1;
-		}
-		#cord{
-			font-style: initial;
-			color: #EF6C00;
-			font-size: 100%;
-			order: 2;
-		}
-		#icon{
-			width: 100%;
-			order: 3;
-		}
-		#humidity{
-			font-family:Lucida Console;
-			color: #00E676;
-			font-size: 100%;
-			order: 4;
-		}
-		#pressure{
-			font-family:Lucida Console;
-			color: #34922B;
-			font-size: 100%;
-			order: 5;
-		}
-		#temp{
-			font-size: 200%;
-			font-weight: bold;
-			color: #F44336;
-			order: 6;
-		}
-		#wind{
-			font-family:Lucida Console;
-			color: #9C27B0;
-			font-size: 100%;
-			order: 7;
-		}
-		#card-action{
-			order: 8;
-		}
-		.row{
-			width: 80%;
-		}
-		.card{
-			display: flex;
-			flex-wrap: wrap;
-		}
-		td{
-			padding: 0%;
-		}
-		#card-action{
-			background-color: #ff8a50;
-		}
-		@media screen and (min-width: 500px) and (max-width: 749px){
-			#head_icon{
-				padding: 10%;
-			}
-		}
-		@media screen and (min-width: 750px){
-			.row{
-				width: 50%;
-			}
-		}
-	</style>
+	#input{
+		background-color: white;
+		max-width: 96%;
+	}
+	/*card image*/
+	#head_icon{
+		width: 100%;
+	}
+	/*card content*/
+	#card_head{
+		font-size: 200%;
+		font-family: initial;
+		color: #3F51B5;
+		order: 1;
+		width: 100%;
+	}
+	#cord{
+		font-style: initial;
+		color: #EF6C00;
+		font-size: 100%;
+		order: 2;
+		width: 100%;
+	}
+	#weather_icon{
+		width: 100%;
+		order: 3;
+		width: 100%;
+	}
+	#humidity{
+		font-family:Lucida Console;
+		color: #00E676;
+		font-size: 100%;
+		order: 4;
+		width: 100%;
+	}
+	#pressure{
+		font-family:Lucida Console;
+		color: #34922B;
+		font-size: 100%;
+		order: 5;
+		width: 100%;
+	}
+	#temp{
+		font-size: 200%;
+		font-weight: bold;
+		color: #F44336;
+		order: 6;
+		width: 100%;
+	}
+	#wind{
+		font-family:Lucida Console;
+		color: #9C27B0;
+		font-size: 100%;
+		order: 7;
+		width: 100%;
+	}
+	#card-action{
+		order: 8;
+		width: 100%;
+	}
+	/*outer part*/
+	.row{
+		width: 96%;
+	}
+	.card-content{
+		width: 100%;
+		display: flex;
+		flex-wrap: wrap;
+	}
+	div{
+		padding: 0%;
+	}
+	#card-action{
+		background-color: #ff8a50;
+	}
+
+</style>
+<!-- <style type="text/css">
+@media screen and (min-width: 500px) and (max-width: 749px){
+	#head_icon{
+		padding: 10%;
+	}
+}
+@media screen and (min-width: 750px){
+	.row{
+		width: 50%;
+	}
+}
+</style> -->
 </head>
 <body>
-<header>
-	
-</header>
-<center>
-<div>
-	<form onsubmit="return load()" id="input">
-		<input type="text" class="form-control" placeholder="Enter city name" id="city" name="city" autocomplete="off">
-		<input type="submit" id="submit" class="btn btn-success" value="Go">
-	</form>
-</div>
-<!-- card -->
-<div class="row">
-          <div class="card">
-            <div class="card-image">
-              <img src="" id="head_icon">
-            </div>
-            <div class="card-content">
-            	<table>
-            		<tr>
-            			<td>
-            				<table>
-            					<tr>
-            						<td id="card_head"></td>
-            					</tr>
-            					<tr>
-            						<td id="cord"></td>
-            					</tr>
-            				</table>
-            			</td>
-            			<td id="weather_icon">
-            				<img src="" id="icon">
-            			</td>
-            		</tr>
-            		<tr>
-            			<td id="temp"></td>
-            			<td>
-            				<table>
-            					<tr>
-            						<td id="humidity"></td>
-            					</tr>
-            					<tr>
-            						<td id="pressure"></td>
-            					</tr>
-            				</table>
-            			</td>
-            		</tr>
-            		<tr>
-            			<td id="wind"></td>
-            		</tr>
-            	</table>
-            </div>
-            <div class="card-action" id="card-action">
-              <a href="#">....</a>
-            </div>
-        </div>
-      </div>
-      <!-- card end -->
-  </center>
-<footer>
-	
-</footer>
+	<header>
+
+	</header>
+	<center>
+		<div>
+			<form onsubmit="return load()" id="input">
+				<input type="text" class="form-control" placeholder="Enter city name" id="city" name="city" autocomplete="off">
+				<input type="submit" id="submit" class="btn btn-success" value="Go">
+			</form>
+		</div>
+		<!-- card -->
+		<div class="row">
+			<div class="card">
+				<div class="card-image">
+					<img src="" id="head_icon">
+				</div>
+				<div class="card-content">
+					<div id="card_head"></div>
+					<div id="cord"></div>
+					<div id="weather_icon">
+						<img src="" id="icon">
+					</div>
+					<div id="temp"></div>
+					<div id="humidity"></div>
+					<div id="pressure"></div>
+					<div id="wind"></div>
+				</div>
+				<div class="card-action" id="card-action">
+					<a href="#">....</a>
+				</div>
+			</div>
+		</div>
+		<!-- card end -->
+	</center>
+	<footer>
+
+	</footer>
 </body>
 <script type="text/javascript">
 	$(window).on("load" , function(){
 		$(".row").hide();
 	});
 	function load() {
+		if ($("#city").val()=="") {
+			alert("Please enter exact name of the city to see weather of that city");
+		}
+		else {
 		var city = $("#city").val();
 		var urlw = "http://api.openweathermap.org/data/2.5/weather?q=" + city +"&type=accurate&units=metric&APPID=0a033ea833e9d49c48942990f577252c";
 		$.ajax({
-        url: urlw,
-        dataType: "jsonp",
-        jsonp: "callback",
-        success: function( data ) {
-        	var weather = [data.main.temp , data.main.pressure , data.main.humidity , data.coord.lon , data.coord.lat , data.name , data.wind.speed , data.wind.deg , data.weather[0].icon , data.weather[0].description];
-        	$("#head_icon").attr("src" , "http://maps.googleapis.com/maps/api/streetview?size=600x400&location=" + weather[5]);
-        	$("#icon").attr("src" , "http://openweathermap.org/img/w/"+weather[8]+".png");
-            $("#temp").text(weather[0]+" °C");
-            $("#pressure").text(weather[1]+" atm Pressure");
-            $("#humidity").text(weather[2]+"% Humidity");
-            $("#cord").text("Coordinate(lon.,lat.) : "+weather[3]+" , "+weather[4]);
-            $("#card_head").text(weather[5]);
-            $("#wind").text("Wind : "+weather[6]+" m/s , "+weather[7]+"°");
-            }
-    });
+			url: urlw,
+			dataType: "jsonp",
+			jsonp: "callback",
+			success: function( data ) {
+				var weather = [data.main.temp , data.main.pressure , data.main.humidity , data.coord.lon , data.coord.lat , data.name , data.wind.speed , data.wind.deg , data.weather[0].icon , data.weather[0].description];
+
+				if (weather[5].localeCompare("undefined")!=0){
+					$("#head_icon").attr("src" , "http://maps.googleapis.com/maps/api/streetview?size=600x400&location=" + weather[5]);
+				}
+				if (weather[5].localeCompare("undefined")!=0){
+					$("#card_head").text(weather[5]);
+				}
+				if ((weather[3]+"").localeCompare("undefined")!=0 && (weather[4]+"").localeCompare("undefined")!=0){
+					$("#cord").text("Coordinate(lon.,lat.) : "+weather[3]+" , "+weather[4]);
+				}
+				if ((weather[8]+"").localeCompare("undefined")!=0){
+					$("#icon").attr("src" , "http://openweathermap.org/img/w/"+weather[8]+".png");
+				}
+				if ((weather[2]+"").localeCompare("undefined")!=0){
+					$("#humidity").text(weather[2]+"% Humidity");
+				}
+				if ((weather[1]+"").localeCompare("undefined")!=0){
+					$("#pressure").text(weather[1]+" atm Pressure");
+				}
+				if ((weather[0]+"").localeCompare("undefined")!=0){
+					$("#temp").text(weather[0]+" °C");
+				}
+				if ((weather[6]+"").localeCompare("undefined")!=0 && (weather[7]+"").localeCompare("undefined")!=0){
+					$("#wind").text("Wind : "+weather[6]+" m/s , "+weather[7]+"°");
+				}
+			}
+		});
 		$(".row").show();
-		 return false;
+	}
+		return false;
 	}
 </script>
 </html>
