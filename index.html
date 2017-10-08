@@ -39,7 +39,6 @@
 	#weather_icon{
 		width: 100%;
 		order: 3;
-		width: 100%;
 	}
 	#humidity{
 		font-family:Lucida Console;
@@ -72,6 +71,7 @@
 	#card-action{
 		order: 8;
 		width: 100%;
+		background-color: #ff8a50;
 	}
 	/*outer part*/
 	.row{
@@ -85,23 +85,95 @@
 	div{
 		padding: 0%;
 	}
-	#card-action{
-		background-color: #ff8a50;
-	}
 
 </style>
-<!-- <style type="text/css">
-@media screen and (min-width: 500px) and (max-width: 749px){
-	#head_icon{
-		padding: 10%;
+<style type="text/css">
+@media screen and (min-width: 400px) and (max-width: 700px){
+	/*outer part*/
+	.row{
+		max-width: 300px;
+		margin: auto;
+	}
+	#temp{
+		font-size: 300%;
+	}
+	#humidity{
+		font-size: 120%;
+	}
+	#pressure{
+		font-size: 120%;
+	}
+	#wind{
+		font-size: 120%;
 	}
 }
-@media screen and (min-width: 750px){
-	.row{
+@media screen and (min-width: 701px){
+	#input{
+		max-width: 600px;
+		margin: auto;
+	}
+	/*card image*/
+	#icon{
+		width: 75%;
+	}
+	#head_icon{
+		width: 100%;
+	}
+	/*card content*/
+	#card_head{
+		font-size: 300%;
+		order: 1;
+		width: 100%;
+	}
+	#cord{
+		font-size: 100%;
+		order: 2;
+		width: 100%;
+	}
+	#weather_icon{
+		width: 50%;
+		order: 4;
+	}
+	#humidity{
+		font-size: 120%;
+		order: 5;
+		width: 50%;
+		margin: auto;
+	}
+	#pressure{
+		font-size: 120%;
+		order: 6;
 		width: 50%;
 	}
+	#temp{
+		font-size: 320%;
+		font-weight: bold;
+		order: 3;
+		width: 50%;
+		margin: auto;
+	}
+	#wind{
+		font-size: 120%;
+		order: 7;
+		width: 100%;
+		margin-top: 10%;
+	}
+	#card-action{
+		order: 8;
+		width: 100%;
+	}
+	/*outer part*/
+	.row{
+		width: 400px;
+		margin: auto;
+	}
+	.card-content{
+		width: 100%;
+		display: flex;
+		flex-wrap: wrap;
+	}
 }
-</style> -->
+</style>
 </head>
 <body>
 	<header>
