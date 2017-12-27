@@ -233,7 +233,7 @@
 				var weather = [data.main.temp , data.main.pressure , data.main.humidity , data.coord.lon , data.coord.lat , data.name , data.wind.speed , data.wind.deg , data.weather[0].icon , data.weather[0].description];
 
 				if (weather[5].localeCompare("undefined")!=0){
-					$("#head_icon").attr("src" , "http://maps.googleapis.com/maps/api/streetview?size=600x400&location=" + weather[5]);
+					$("#head_icon").attr("src" , "https://maps.googleapis.com/maps/api/streetview?size=600x400&location=" + weather[5]);
 				}
 				if (weather[5].localeCompare("undefined")!=0){
 					$("#card_head").text(weather[5]);
@@ -242,7 +242,7 @@
 					$("#cord").text("Coordinate(lon.,lat.) : "+weather[3]+" , "+weather[4]);
 				}
 				if ((weather[8]+"").localeCompare("undefined")!=0){
-					$("#icon").attr("src" , "http://openweathermap.org/img/w/"+weather[8]+".png");
+					$("#icon").attr("src" , "https://openweathermap.org/img/w/"+weather[8]+".png");
 				}
 				if ((weather[2]+"").localeCompare("undefined")!=0){
 					$("#humidity").text(weather[2]+"% Humidity");
